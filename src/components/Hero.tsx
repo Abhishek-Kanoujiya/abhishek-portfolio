@@ -84,7 +84,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/abhishekkanoujiya-40712532a"
+                href="https://www.linkedin.com/in/abhishek-kanoujiya-40712532a"
                 target="_blank"
                 rel="noreferrer"
                 className="p-3 rounded-lg bg-[#0a66c2]/10 border border-[#0a66c2]/30 text-[#0a66c2] hover:text-[#0077b5] hover:border-[#0a66c2] hover:scale-105 transition-all"

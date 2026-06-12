@@ -12,7 +12,8 @@ A modern developer portfolio website built using **Next.js (App Router)**, **Typ
 ## ✨ Core Features
 * **Obsidian Velvet Theme:** Dark mode aesthetic combining deep navy, slate-violet accents, and warm gold highlights.
 * **Interactive Code Profile Card:** A VS Code-style editor interface (`abhishek.json`) with full syntax highlighting.
-* **Internship Details:** Highlighted position as an AI/ML Virtual Intern at Infosys Springboard.
+* **Internship Details:** Highlighted position as an AI/ML Virtual Intern at Infosys Springboard.ai yaar
+
 * **Timeline Milestones:** Chronological map detailing GATE CS & IT qualification, B.Tech CSE CGPA at PSIT Kanpur, and CBSE Board marks.
 * **Credentials & Badges:** Highlights verified industry credentials, including **AWS Cloud Practitioner Essentials** and **AWS Solutions Architecture Job Simulation**.
 * **Direct Messaging:** Functional contact form that securely forwards client details and messages directly to your email inbox.
