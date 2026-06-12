@@ -64,7 +64,6 @@ const CERTIFICATIONS = [
     badge: "AWS Certified",
     badgeColor: "text-amber-400 bg-amber-500/10 border-amber-500/20",
     date: "April 2025",
-    image: "/aws-cloud-practitioner.png",
   },
   {
     name: "Solutions Architecture Job Simulation",
@@ -72,7 +71,6 @@ const CERTIFICATIONS = [
     badge: "Job Simulation",
     badgeColor: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
     date: "August 2025",
-    image: "/aws-solutions-architecture.png",
   },
   {
     name: "Introduction to Programming in C",
@@ -105,20 +103,8 @@ const CERTIFICATIONS = [
 ];
 
 export default function Achievements() {
-  const [selectedCert, setSelectedCert] = React.useState<{ name: string; image: string } | null>(null);
-
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedCert(null);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   return (
-    <section id="achievements" className="relative py-20 border-b border-indigo-950/40 animate-fade-in">
+    <section id="achievements" className="py-20 border-b border-indigo-950/40 animate-fade-in">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
@@ -220,76 +206,30 @@ export default function Achievements() {
             </h3>
 
             <div className="grid grid-cols-1 gap-3">
-              {CERTIFICATIONS.map((cert) => {
-                const isClickable = !!cert.image;
-                return (
-                  <div
-                    key={cert.name}
-                    onClick={() => isClickable && setSelectedCert({ name: cert.name, image: cert.image! })}
-                    className={`p-4 rounded-xl human-card flex items-center justify-between transition-all duration-200 group ${
-                      isClickable
-                        ? "cursor-pointer border-indigo-955 hover:border-indigo-500/40 hover:bg-indigo-950/10"
-                        : "hover:border-indigo-500/20"
-                    }`}
-                  >
-                    <div className="space-y-1 pr-4">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="text-sm font-bold text-slate-200 group-hover:text-white transition-colors">
-                          {cert.name}
-                        </h4>
-                        {isClickable && (
-                          <span className="inline-flex items-center gap-1 text-[9px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/20">
-                            <span className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
-                            View Cert
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-[11px] text-slate-550 font-mono">
-                        {cert.issuer} &bull; {cert.date}
-                      </p>
-                    </div>
-                    <span className={`text-[10px] font-bold px-2 py-1 rounded border flex-shrink-0 ${cert.badgeColor}`}>
-                      {cert.badge}
-                    </span>
+              {CERTIFICATIONS.map((cert) => (
+                <div
+                  key={cert.name}
+                  className="p-4 rounded-xl human-card flex items-center justify-between hover:border-indigo-500/20"
+                >
+                  <div className="space-y-1 pr-4">
+                    <h4 className="text-sm font-bold text-slate-200">
+                      {cert.name}
+                    </h4>
+                    <p className="text-[11px] text-slate-550 font-mono">
+                      {cert.issuer} &bull; {cert.date}
+                    </p>
                   </div>
-                );
-              })}
+                  <span className={`text-[10px] font-bold px-2 py-1 rounded border flex-shrink-0 ${cert.badgeColor}`}>
+                    {cert.badge}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
         </div>
 
       </div>
-
-      {/* Lightbox Modal */}
-      {selectedCert && (
-        <div
-          className="fixed inset-0 z-55 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 cursor-pointer animate-fade-in"
-          onClick={() => setSelectedCert(null)}
-        >
-          <div
-            className="relative max-w-3xl w-full bg-[#0a0915] border border-indigo-950/80 rounded-xl p-3 flex flex-col gap-3 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between border-b border-indigo-950/20 pb-2">
-              <h3 className="text-xs sm:text-sm font-bold text-white font-mono">{selectedCert.name}</h3>
-              <button
-                onClick={() => setSelectedCert(null)}
-                className="text-slate-400 hover:text-white font-mono text-[10px] sm:text-xs px-2 py-1 bg-slate-900 border border-slate-800 rounded hover:bg-slate-850"
-              >
-                Close [ESC]
-              </button>
-            </div>
-            <div className="relative w-full overflow-hidden rounded-lg bg-slate-950/20 flex items-center justify-center max-h-[75vh]">
-              <img
-                src={selectedCert.image}
-                alt={selectedCert.name}
-                className="max-h-[65vh] w-auto object-contain rounded border border-indigo-950/30"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
